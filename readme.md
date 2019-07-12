@@ -1,7 +1,10 @@
 我写的主要记录vue webpack 搭建和优化的全过程
+
 #step.1
  npm init 项目名称初始化
+
 #step.2 
+
 ##准备工作 
  * 需要使用的插件
 ```
@@ -16,14 +19,16 @@
  ```
  在安装 vue-loader 时候需要注意
  每个 vue 包的新版本发布时，一个相应版本的 vue-template-compiler 也会随之发布。编译器的版本必须和基本的 vue 包保持同步，这样 vue-loader 就会生成兼容运行时的代码。这意味着你每次升级项目中的 vue 包时，也应该匹配升级 vue-template-compiler。
- 
+
 **4.0以上版本都需要按照**
  * vue项目常用依赖 vue vue-router 
 
 #step.3
+
 我是在 .bin目录下面放的配置文件，这样的好处是让项目变的更加清晰
 
 #step.4 
+
 接下来在package.json中添加配置
 `"start": "webpack --config webpack.config.js"`
 
@@ -233,3 +238,14 @@ js兼容问题
 
 ## 优化
  前面的步骤，基本就完成了vue webpack的基本配置,但是我们怎么能把webpack的性能开到最大呢
+
+upd：更新某功能（不是 feat, 不是 fix）
+feat：新功能（feature）
+fix：修补bug
+docs：文档（documentation）
+style： 格式（不影响代码运行的变动）
+refactor：重构（即不是新增功能，也不是修改bug的代码变动）
+test：增加测试
+chore：构建过程或辅助工具的变动
+git commit -m 'feat: 增加 xxx 功能'
+git commit -m 'bug: 修复 xxx 功能'
