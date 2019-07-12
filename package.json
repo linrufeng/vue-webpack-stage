@@ -1,0 +1,47 @@
+{
+  "name": "vue_stage_1.0",
+  "version": "1.0.0",
+  "description": "vue编译工具",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --open  --config .bin/webpack.dev.js",
+    "build": "webpack --config .bin/webpack.build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linrufeng/linrufeng.github.io.git"
+  },
+  "keywords": [
+    "vue",
+    "webpack"
+  ],
+  "author": "linrufeng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/linrufeng/linrufeng.github.io/issues"
+  },
+  "homepage": "https://github.com/linrufeng/linrufeng.github.io#readme",
+  "devDependencies": {
+    "autoprefixer": "^9.6.1",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.0.0",
+    "file-loader": "^4.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.7.0",
+    "node-sass": "^4.12.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "vue": "^2.6.10",
+    "vue-loader": "^15.7.0",
+    "vue-router": "^3.0.7",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.35.3",
+    "webpack-cli": "^3.3.5",
+    "webpack-dev-server": "^3.7.2"
+  },
+  "dependencies": {
+    "postcss-loader": "^3.0.0"
+  }
+}
