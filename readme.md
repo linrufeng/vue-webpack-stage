@@ -221,6 +221,18 @@ buildCongfig.optimization = {
 };
 ```
 splitChunks 的详细介绍可以参考另一篇 学习文章 **splitChunks** https://www.codercto.com/a/24308.html
+通过配置
+optimization.minimize true/false 我们可以查看我们的代码是否压缩，为了更好的方便查看我们代码打包的内容我们选择不压缩。
+首先我们要去除 我们的无效代码
+这里我借助的是
+其次是 babel 如果我们开发环境只需要 chrome 为了让webpack运转如飞，我们就不需要配置 babel，只需要在打包的过程中配置好就行了
+这里需要准备的是
+```
+npm i @babel/core   @babel/preset-env abel-loader -D
+```
+之后 在 babelrc 进行一下定植后的配置就好了
+
+### 图片，视频 ，svg 的处理
 
 
 #### 这里我先描述一下 vue-loader 的作用 

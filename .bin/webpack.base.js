@@ -1,6 +1,5 @@
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const optimizeCss = require('optimize-css-assets-webpack-plugin');
 module.exports = {    
   entry: './src/app.js',
@@ -12,23 +11,17 @@ module.exports = {
       rules:[
             {
                 test: /\.(sa|sc|c)ss$/,
-                use: ['style-loader','css-loader','postcss-loader', 'sass-loader']
+                include: path.resolve(__dirname, "../src"),
+                use: ['style-loader','css-loader','sass-loader']
             },         
             {
                 test:/\.vue$/,
+                include: path.resolve(__dirname, "../src"),
                 use:['vue-loader']
-            },
-            // {
-            //     test:/\.js$/,
-            //     use:['']
-            // }                    
+            }  
       ]
   },
-  plugins:[
-      new HtmlWebpackPlugin({
-          title:"vue_stage",
-          template:'./src/index.html'
-      }),      
+  plugins:[     
       new VueLoaderPlugin(),      
   ] 
 };
