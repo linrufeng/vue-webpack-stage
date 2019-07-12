@@ -16,6 +16,7 @@
  ```
  在安装 vue-loader 时候需要注意
  每个 vue 包的新版本发布时，一个相应版本的 vue-template-compiler 也会随之发布。编译器的版本必须和基本的 vue 包保持同步，这样 vue-loader 就会生成兼容运行时的代码。这意味着你每次升级项目中的 vue 包时，也应该匹配升级 vue-template-compiler。
+ 
 **4.0以上版本都需要按照**
  * vue项目常用依赖 vue vue-router 
 
