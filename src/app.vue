@@ -4,7 +4,7 @@
         <router-view v-cloak></router-view>
 	</div>
 </template>
-<script>
+<script lang="ts">
 import headers from './component/head.vue';
 export default {
     components:{
