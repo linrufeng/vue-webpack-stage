@@ -82,4 +82,9 @@ publicPath：它其实就是 output.publicPath，当你改变了它，即会覆�
 stats： 可以自定控制要显示的编译细节信息，
 proxy：它其实就是http-proxy-middleware，可以进行处理一些代理的请求。
 
-
+webpack4删除的点：
+module.loaders
+NoErrorsPlugin
+CommonsChunkPlugin
+DefinePlugin
+OccurenceOrderPlugin
