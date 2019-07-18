@@ -1,22 +1,24 @@
 <template>
-    <div @click="tag">`12`12</div>
+    <div class="warper" @click="tag">请求</div>
 </template>
 <style lang="scss">
 .warper{
-    font-size: 12px; 
+    font-size: 30px; 
     color:red;
     background: #fff;
-    width: 500px;
-    height: 200px;
+    width: 150px;
+    height: 60px;
+    border-radius: 50px;
+    text-align: center;
+    line-height: 60px;
     background: #ddd;
-   
 }
 </style>
 <script>
 console.log(1)
 import '../asset/css/test2.scss';
- import { firstName, lastName, year,incCounter } from '../asset/js/a.js';
-
+import { firstName, lastName, year,incCounter } from '../asset/js/a.js';
+import axios from 'axios';
 
 export default {
     data(){
@@ -26,14 +28,9 @@ export default {
     },
     methods:{
         tag(){
-            let a =[1];
-            let b = [2];
-            console.log([...a,...b],"test js",firstName, incCounter())
-            new Promise((res,err)=>{
-                setTimeout(()=>{
-                    console.log(1)
-                    res(1)
-                },1000)
+            axios.get('/workshop/QueryAllOwnedPets'
+            ).then(res=>{
+                console.log(res)
             })
         }
     },

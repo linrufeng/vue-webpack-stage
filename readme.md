@@ -193,7 +193,9 @@ new MiniCssExtractPlugin({
 })
 ```
 这样我们打包出一个main.css,接下来我们要做的是css文件的同类提取，和代码压缩
+
 optimize-css-assets-webpack-plugin 这个插件可以用于压缩和去重 
+
 ```
  new optimizeCss()
 ```
@@ -219,6 +221,49 @@ buildCongfig.optimization = {
         minChunks:1
     }
 };
+```
+在其中使用插件 例如 css压缩 和去除代码中的console
+```
+minimizer:[
+    new optimizeCss(),
+    new UglifyJsPlugin({
+        test: /\.js(\?.*)?$/i,
+        sourceMap: true,
+        uglifyOptions:{
+            compress: {
+                drop_console: true,
+                drop_debugger: true, 
+            },
+        }
+    })
+],
+```
+从webpack4开始官方移除了commonchunk插件，改用了optimization属性进行更加灵活的配置。
+optimization是webpack4新增的，主要是用来让开发者根据需要自定义一些优化构建打包的策略配置，
+关于 splitchunksPlugin 的介绍
+```
+splitChunks: {
+    chunks: "async”,//默认作用于异步chunk，值为all/initial/async/function(chunk),值为function时第一个参数为遍历所有入口chunk时的chunk模块，chunk._modules为chunk所有依赖的模块，通过chunk的名字和所有依赖模块的resource可以自由配置,会抽取所有满足条件chunk的公有模块，以及模块的所有依赖模块，包括css
+    minSize: 30000,  //表示在压缩前的最小模块大小,默认值是30kb
+    minChunks: 1,  // 表示被引用次数，默认为1；
+    maxAsyncRequests: 5,  //所有异步请求不得超过5个
+    maxInitialRequests: 3,  //初始话并行请求不得超过3个
+   automaticNameDelimiter:'~',//名称分隔符，默认是~
+    name: true,  //打包后的名称，默认是chunk的名字通过分隔符（默认是～）分隔
+    cacheGroups: { //设置缓存组用来抽取满足不同规则的chunk,下面以生成common为例
+       common: {
+         name: 'common',  //抽取的chunk的名字
+         chunks(chunk) { //同外层的参数配置，覆盖外层的chunks，以chunk为维度进行抽取
+         },
+         test(module, chunks) {  //可以为字符串，正则表达式，函数，以module为维度进行抽取，只要是满足条件的module都会被抽取到该common的chunk中，为函数时第一个参数是遍历到的每一个模块，第二个参数是每一个引用到该模块的chunks数组。自己尝试过程中发现不能提取出css，待进一步验证。
+         },
+        priority: 10,  //优先级，一个chunk很可能满足多个缓存组，会被抽取到优先级高的缓存组中
+       minChunks: 2,  //最少被几个chunk引用
+       reuseExistingChunk: true，//  如果该chunk中引用了已经被抽取的chunk，直接引用该chunk，不会重复打包代码
+       enforce: true  // 如果cacheGroup中没有设置minSize，则据此判断是否使用上层的minSize，true：则使用0，false：使用上层minSize
+       }
+    }
+}
 ```
 splitChunks 的详细介绍可以参考另一篇 学习文章 **splitChunks** https://www.codercto.com/a/24308.html
 通过配置
@@ -261,3 +306,12 @@ test：增加测试
 chore：构建过程或辅助工具的变动
 git commit -m 'feat: 增加 xxx 功能'
 git commit -m 'bug: 修复 xxx 功能'
+## 代码引入自动识别
+```
+  resolve: {
+    extensions: ['.js', '.vue', '.json', '.ts'],
+    alias: {
+      '@': resolve('src')
+    }
+  }
+```
