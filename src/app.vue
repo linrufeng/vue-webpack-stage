@@ -1,14 +1,36 @@
 <template>
-	<div id="app">
-        <headers/>
-        <router-view v-cloak></router-view>
-	</div>
+    <div>
+        {{helloMsg}}
+    </div>
 </template>
 <script lang="ts">
-import headers from './component/head.vue';
-export default {
-    components:{
-        headers
-    }
+import Vue from 'vue';
+import Component from 'vue-class-component';
+@Component({
+//   props: {
+//     propMessage: String
+//   }
+})
+export default class App extends Vue {
+  // initial data
+  msg = 123
+
+  // use prop values for initial data
+  helloMsg = 'Hello, ' + this.msg
+
+  // lifecycle hook
+  mounted () {
+    this.greet()
+  }
+
+  // computed
+  get computedMsg () {
+    return 'computed ' + this.msg
+  }
+
+  // method
+  greet () {
+    alert('greeting: ' + this.msg)
+  }
 }
 </script>
