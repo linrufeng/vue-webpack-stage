@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --colors --config .bin/webpack.dev.js",
-    "build:press": "webpack --progress --colors  --press  --config .bin/webpack.build.js",
+    "build": "webpack --progress --colors  --press  --config .bin/webpack.build.js",
     "build:un": "webpack  --config .bin/webpack.build.js"
   },
   "repository": {
@@ -24,6 +24,7 @@
   "homepage": "https://github.com/linrufeng/linrufeng.github.io#readme",
   "devDependencies": {
     "@babel/core": "^7.5.4",
+    "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/preset-env": "^7.5.4",
     "autoprefixer": "^9.6.1",
     "axios": "^0.19.0",
@@ -53,6 +54,7 @@
     "yargs": "^13.2.4"
   },
   "dependencies": {
+    "@babel/runtime": "^7.5.5",
     "postcss-loader": "^3.0.0"
   }
 }

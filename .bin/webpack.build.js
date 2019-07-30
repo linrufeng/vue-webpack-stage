@@ -9,33 +9,43 @@ const argv = require('yargs').argv;
 const path = require('path');
 let buildCongfig = Object.assign(web_base,{
     mode:"production",    
-    devtool:"source-map",
+    // devtool:"source-map",
     optimization:{
-        minimize:argv.press?true:false,
-        minimizer:[          
-            new UglifyJsPlugin({
-                test: /\.js(\?.*)?$/i,
-                sourceMap: true,
-                extractComments: true,               
-                uglifyOptions:{
-                    compress: {
-                        drop_console: true,
-                        drop_debugger: true, 
-                    },
-                    output: {
-                        comments: /@license/i,
-                    },            
-                },
+         minimize:argv.press?true:false,
+        // minimizer:[          
+        //     new UglifyJsPlugin({
+        //         test: /\.js(\?.*)?$/i,
+        //         extractComments: true,               
+        //         uglifyOptions:{
+        //             compress: {
+        //                 drop_console: true,
+        //                 drop_debugger: true, 
+        //             }                              
+        //         },
                
-            })
-        ],
-        runtimeChunk: {
-            name: entrypoint => `runtimechunk~${entrypoint.name}`
-          },
+        //     })
+        // ],
+        // runtimeChunk: {
+        //     name: entrypoint => `runtimechunk~${entrypoint.name}`
+        //   },
         splitChunks:{
-            minSize:300,
-            chunks: "all",      
-            name:"common"
+            chunks: "async",
+            minSize: 30000,
+            minChunks: 1,
+            maxAsyncRequests: 5,
+            maxInitialRequests: 3,
+            name: true,
+            cacheGroups: {
+                default: {
+                    minChunks: 2,
+                    priority: -20,
+                    reuseExistingChunk: true,
+                },
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10
+                }
+            }
         }
     }
 });
