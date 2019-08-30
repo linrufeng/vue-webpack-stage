@@ -1,6 +1,7 @@
 <template>
     <div>
         {{helloMsg}}
+        <img src="./asset/svg/clock"/>
         <Hello/>
     </div>
 </template>

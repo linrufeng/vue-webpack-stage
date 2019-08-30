@@ -8,7 +8,7 @@ module.exports = {
     path: path.resolve(__dirname, '../dist')
   }, 
   resolve: {
-    extensions: [ '.tsx', '.ts', '.js', '.vue' ]
+    extensions: [ '.tsx', '.ts', '.js', '.vue','.svg' ]
   },
   module:{
       rules:[
@@ -30,9 +30,20 @@ module.exports = {
                     appendTsxSuffixTo: [/\.vue$/]
                   }
                 }
-              ]
+              ]              
+            },  
+            {
+              test: /\.(png|jpg|gif|webp|woff|eot|ttf|svg)$/,
+                use:{
+                    loader:'url-loader',
+                    options:{
+                        name:'img/[name].[ext]',
+                        limit:3000
+                    }
+                },
+                exclude:[path.resolve('src/asset/svgSprite')]
               
-            },       
+            },     
             {
               test:/\.vue$/,
               include: path.resolve(__dirname, "../src"),
