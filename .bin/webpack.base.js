@@ -33,6 +33,14 @@ module.exports = {
               ]              
             },  
             {
+              test: /\.svg$/,
+                loader: 'svg-sprite-loader',
+                include:[path.resolve('src/asset/svgSprite')],
+                options:{
+                    symbolId:'icon-[name]'
+                }
+            },
+            {
               test: /\.(png|jpg|gif|webp|woff|eot|ttf|svg)$/,
                 use:{
                     loader:'url-loader',

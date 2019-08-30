@@ -1,4 +1,8 @@
 @charset "utf-8";
+@import './../font/FZBANGSXJW.css';
+@import './big-text.scss';
+@import './self-animate.scss';
+@import './layer.scss';
 html,
 body,
 div,
@@ -101,6 +105,7 @@ body {
     width: 100%;
     background-color:#fff;
     font-family: PingHei,Lucida Grande,Lucida Sans Unicode,STHeiti,Helvetica,Arial,Verdana,"sans-serif",PingHei-light,SimHei,Droid Sans;
+    font-size: 0.26rem;
 }
 
 a,
@@ -118,3 +123,5 @@ img {
 [v-cloak] {
     display: none;
 }
+
+

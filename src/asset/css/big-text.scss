@@ -1,0 +1,38 @@
+    
+    
+@function torem($px) {
+        @return $px / 200px * 1rem;
+}
+@mixin spImg($width, $height, $left, $top) {
+    width: torem($width); 
+    height:torem($height);   
+    background: url('./../img/css_sprites.png')  no-repeat torem($left) torem($top);
+    background-size:torem(810px);
+}
+.bg-bamianlinglong{            
+    @include spImg( 770px, 254px, -20px, -1721px);
+}
+.bg-jingjingyeye{       
+    @include spImg( 665px, 248px, -20px, -1433px);
+}
+.bg-pin{      
+    @include spImg( 377px, 158px, -20px, -562px);
+}
+.bg-mang{     
+    @include spImg( 551px, 159px, -20px, -760px);
+}
+.bg-nvli{       
+    @include spImg( 596px, 143px, -20px, -379px);
+}
+.bg-shun{       
+    @include spImg( 515px, 138px, -20px, -20px);
+}
+.bg-wen{     
+    @include spImg( 489px, 141px, -20px, -198px);
+}
+.bg-shuang{      
+    @include spImg( 710px, 161px, -20px, -959px);
+}
+.bg-yemaozi{       
+    @include spImg( 441px, 233px, -20px, -1160px);
+}
