@@ -195,6 +195,7 @@ export default class Index extends Vue {
 }
 .index-box{
     overflow: hidden;
+     perspective: 500;
     .next-btn{
         position: absolute;
         z-index: 3;
@@ -211,31 +212,36 @@ export default class Index extends Vue {
             transform: translate(-50%,-10px);
         }
     }
-}
-.bgs{  
-      perspective: 500;
-      overflow: hidden;
-      height: 100vh;
-     &::after{
+    &::after{
         content: '';
         display: block;
         position: absolute;
-        width: 200%;
-        height: 200%;;
+        width: 400%;
+        height: 400%;;
         top:0;
         left:0;
         background: url(./../asset/img/wangge@2x.png) ;
         background-size: 7.5rem auto;
-        transform: rotateY(1deg);
+        // transform: rotateY(1deg);
         perspective-origin: 0% 0%;
+        animation: moves 60s infinite;
     }
-    .swiper-wrapper{
-         perspective: 500;
+    @keyframes moves {
+        100%{
+            transform: translate(-100vh,-100vh);
+        }
     }
-    .swiper-slide{
-        transform: skew(-1deg);
-           perspective-origin: 0% 0%;
-    }
+}
+.bgs{  
+     
+     
+    // .swiper-wrapper{
+    //      perspective: 500;
+    // }
+    // .swiper-slide{
+    //     transform: skew(-1deg);
+    //        perspective-origin: 0% 0%;
+    // }
     
 }
 </style>
