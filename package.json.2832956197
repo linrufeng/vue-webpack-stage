@@ -4,8 +4,7 @@
   "description": "vue编译工具",
   "main": "index.js",
   "scripts": {
-    "dev":"webpack-dev-server --colors --config .bin/webpack.dev.js --disable-host-check  --host 0.0.0.0  --port 41618",
-    "start": "npm run dev",
+    "start": "webpack-dev-server --colors --config .bin/webpack.dev.js --disable-host-check  --host 0.0.0.0  --port 41618",
     "build": "webpack --progress --colors  --press  --config .bin/webpack.build.js",
     "build:un": "webpack  --config .bin/webpack.build.js",
     "server": "node .bin/webpack.ssr.js"

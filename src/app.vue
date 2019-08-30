@@ -37,7 +37,7 @@ export default class App extends Vue {
   // method
   greet () {
     this.msg = 4;
-    this.helloMsg = '你好'
+    this.helloMsg = '你好,'
     // alert('greeting: ' + this.msg)
   }
 }

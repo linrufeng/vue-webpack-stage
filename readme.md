@@ -1,4 +1,5 @@
 我写的主要记录vue webpack 搭建和优化的全过程
+node 版本 10.15.0
 
 #step.1
  npm init 项目名称初始化
@@ -279,6 +280,10 @@ npm i @babel/core   @babel/preset-env abel-loader -D
 
 ### 图片，视频 ，svg 的处理
 
+这里我使用的是
+url-loader 有打就够了
+如果使用 svg 精灵 
+我这里使用的 是 svg-sprite-loader
 
 #### 这里我先描述一下 vue-loader 的作用 
 
