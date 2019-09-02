@@ -1,5 +1,5 @@
 
-const host = 'http://jdmegy.jd.com/jmeMobile/backlook/';
+const host = '/backlook/';
 
 export const getWeekDataByType = `${host}getWeekDataByType`;
 export const getWeekTypeList = `${host}getWeekTypeList`;

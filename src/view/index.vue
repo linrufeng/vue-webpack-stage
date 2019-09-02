@@ -125,8 +125,8 @@ export default class Index extends Vue {
              
     }
     mounted() {          
-        //this.getAllDate();           
-         this.initSwiper()
+        this.getAllDate();           
+        //  this.initSwiper()
     };
 }
 </script>
@@ -221,8 +221,7 @@ export default class Index extends Vue {
         top:0;
         left:0;
         background: url(./../asset/img/wangge@2x.png) ;
-        background-size: 7.5rem auto;
-        // transform: rotateY(1deg);
+        background-size: 7.5rem auto;      
         perspective-origin: 0% 0%;
         animation: moves 60s infinite;
     }
@@ -232,16 +231,5 @@ export default class Index extends Vue {
         }
     }
 }
-.bgs{  
-     
-     
-    // .swiper-wrapper{
-    //      perspective: 500;
-    // }
-    // .swiper-slide{
-    //     transform: skew(-1deg);
-    //        perspective-origin: 0% 0%;
-    // }
-    
-}
+
 </style>
