@@ -6,8 +6,11 @@
                 <note-item>
                 本周参加会议<span class="num">{{content.joymeetingCount}}</span>场
                 </note-item>
-                <note-item>
-                    与<span>黄小雨</span>沟通次数最多本周给他发送 <span class="num">{{content.numberOfMostCommunication}}</span>条信息
+                <note-item v-show="content.joymeetingCount !=0">
+                    与<span>{{content.nameOfMostCommunication}}</span>沟通次数最多本周给他发送 <span class="num">{{content.numberOfMostCommunication}}</span>条信息
+                </note-item>
+                <note-item v-show="content.joymeetingCount ==0">
+                     安心工作，与世无争
                 </note-item>
             </note-show>       
             <div data-swiper-parallax-x="-300" class="floorPic">

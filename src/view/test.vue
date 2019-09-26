@@ -4,20 +4,21 @@
         <!-- <Scene2 :run='run'></Scene2> -->
         <!-- 
         <Scene4 :run='run'></Scene4> -->
-        <!-- <Scene5 :run='run'></Scene5>  -->
+        <!-- <Scene5 :run='self'></Scene5>  -->
         <!-- <Scene1 :onshow="true"/> -->
         <!-- <index :show="self"></index> -->
         <!-- <index :show='self'/> -->
-        <!-- <bamianlingrong></bamianlingrong> -->
+        <!-- <bamianlinglong></bamianlinglong> -->
         <!-- <jingjingyeye></jingjingyeye> -->
         <!-- <mang></mang> -->
         <!-- <nvli></nvli> -->
         <!-- <pin></pin> -->
         <!-- <riliwanji></riliwanji> -->
         <shuang></shuang>
-        <!-- <shun></shun> -->
-        <!-- <wen></wen> -->
-        <!-- <yemaozi></yemaozi> -->
+        <shun></shun>
+        <wen></wen>
+        <yemaozi></yemaozi>
+        <jingjingyeye></jingjingyeye>
     </div>
 </template>
 <script>
@@ -29,9 +30,16 @@ import {
     Scene4,
     Scene5   
     } from "./../components/scene";
-import shun from './../components/suiji/shun';
+import mang from './../components/suiji/mang';
 import shuang from './../components/suiji/shuang';
-
+import pin from './../components/suiji/pin';
+import nvli from './../components/suiji/nvli';
+import jingjingyeye from './../components/suiji/jingjingyeye';
+import bamianlinglong from './../components/suiji/bamianlinglong';
+import riliwanji from './../components/suiji/riliwanji';
+import shun from './../components/suiji/shun';
+import wen from './../components/suiji/wen';
+import yemaozi from './../components/suiji/yemaozi';
 export default {
     data(){
         return {
@@ -48,7 +56,15 @@ export default {
         Scene4,
         Scene5,
         shun,
-        shuang
+        shuang,
+        pin,
+        jingjingyeye,
+        bamianlinglong,
+        mang,
+        nvli,
+        riliwanji,
+        wen,
+        yemaozi
     }
 }
 </script>

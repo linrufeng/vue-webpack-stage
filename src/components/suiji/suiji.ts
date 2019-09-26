@@ -9,7 +9,7 @@ import shuang from './shuang.vue'
 import shun from './shun.vue'
 import wen from './wen.vue'
 import yemaozi from './yemaozi.vue'
-import footer from './footer.vue'
+// import footer from './footer.vue'
 
 
 export const Bamianlinglong = bamianlinglong
@@ -22,5 +22,5 @@ export const Shuang = shuang
 export const Shun = shun
 export const Wen = wen
 export const Yemaozi= yemaozi
-export const Footer = footer
+// export const Footer = footer
 

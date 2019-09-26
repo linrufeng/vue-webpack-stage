@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "description": "vue编译工具",
   "main": "index.js",
+  "pathConfig": {
+    "cache": "cache"
+  },
   "scripts": {
-    "dev": "webpack-dev-server --colors --config .bin/webpack.dev.js --disable-host-check   --host 0.0.0.0    --port 41618",
+    "dev": "webpack-dev-server --colors  --config .bin/webpack.dev.js",
     "start": "npm run dev",
-    "build": "webpack --progress --colors  --press  --config .bin/webpack.build.js",
-    "build:un": "webpack  --config .bin/webpack.build.js",
+    "build": "webpack  --config .bin/webpack.build.js",
     "server": "node .bin/webpack.ssr.js"
   },
   "repository": {
@@ -28,6 +30,7 @@
     "@babel/core": "^7.5.4",
     "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/preset-env": "^7.5.4",
+    "autoprefixer": "^9.6.1",
     "axios": "^0.19.0",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
@@ -60,8 +63,13 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.5.5",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-vue-jsx": "^3.7.0",
+    "cache-loader": "^4.1.0",
+    "chalk": "^2.4.2",
     "express": "^4.17.1",
     "postcss-loader": "^3.0.0",
+    "progress-bar-webpack-plugin": "^1.12.1",
     "vue-server-renderer": "^2.6.10"
   }
 }

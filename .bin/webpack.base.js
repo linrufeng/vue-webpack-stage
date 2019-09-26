@@ -1,6 +1,8 @@
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const optimizeCss = require('optimize-css-assets-webpack-plugin');
+const config = require('./../package.json');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const chalk = require('chalk');
 module.exports = {    
   entry: './src/app.ts',
   output: {
@@ -10,19 +12,35 @@ module.exports = {
   resolve: {
     extensions: [ '.tsx', '.ts', '.js', '.vue','.svg' ]
   },
+  externals:{
+    vue:'Vue'
+  },
   module:{
-      rules:[
+      rules:[           
             {
               test: /\.(sa|sc|c)ss$/,
               include: path.resolve(__dirname, "../src"),
               exclude: /node_modules/,
-              use: ['style-loader','css-loader','sass-loader']
+              use: [
+                {
+                  loader: 'cache-loader',
+                  options: {
+                    cacheDirectory: path.resolve(config.pathConfig.cache)
+                  }
+                },
+                'style-loader','css-loader','sass-loader']
             },  
             {
-              test: /\.tsx?$/,              
+              test: /\.ts?$/,              
               include: path.resolve(__dirname, "../src"),
               exclude: /node_modules/,
               use:[
+                {
+                  loader: 'cache-loader',
+                  options: {
+                    cacheDirectory: path.resolve(config.pathConfig.cache)
+                  }
+                },
                 {                  
                   loader:'ts-loader',
                   options: {
@@ -34,33 +52,72 @@ module.exports = {
             },  
             {
               test: /\.svg$/,
-                loader: 'svg-sprite-loader',
-                include:[path.resolve('src/asset/svgSprite')],
-                options:{
-                    symbolId:'icon-[name]'
-                }
+              include: path.resolve(__dirname, "../src"),
+              exclude: /node_modules/,
+                use: [{
+                  loader: 'cache-loader',
+                  options: {
+                    cacheDirectory: path.resolve(config.pathConfig.cache)
+                  }
+                },{
+                  loader:'svg-sprite-loader',
+                  options:{
+                      symbolId:'icon-[name]'
+                  }                  
+                }],
+                include:[path.resolve('src/asset/svgSprite')]
             },
             {
-              test: /\.(png|jpg|gif|webp|woff|eot|ttf|svg)$/,
-                use:{
+              test: /\.(svg)$/,
+              include: path.resolve(__dirname, "../src"),
+              exclude: /node_modules/,
+                use:[{
+                    loader:'file-loader',
+                    options:{
+                        name:'img/[name].[ext]',
+                        limit:3000
+                    }
+                }],
+                exclude:[path.resolve('src/asset/svgSprite')]
+              
+            }, 
+            {
+              test: /\.(png|jpg|gif|webp|woff|eot|ttf)$/,
+              include: path.resolve(__dirname, "../src"),
+              exclude: /node_modules/,
+                use:[{
+                  loader: 'cache-loader',
+                  options: {
+                    cacheDirectory: path.resolve(config.pathConfig.cache)
+                  }
+                },{
                     loader:'url-loader',
                     options:{
                         name:'img/[name].[ext]',
                         limit:3000
                     }
-                },
+                }],
                 exclude:[path.resolve('src/asset/svgSprite')]
               
-            },     
+            },                 
             {
               test:/\.vue$/,
               include: path.resolve(__dirname, "../src"),
               exclude: /node_modules/,
-              use:['vue-loader']
+              use:[{
+                  loader: 'cache-loader',
+                  options: {
+                    cacheDirectory: path.resolve(config.pathConfig.cache)
+                  }
+                },'vue-loader']
             }  
       ]
   },
   plugins:[     
-      new VueLoaderPlugin() 
+      new VueLoaderPlugin(),
+      new ProgressBarPlugin({
+        format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)',
+        clear: false
+      })    
   ] 
 };

@@ -1,7 +1,7 @@
 <template>
-    <div class="center">
-        <div class="floor1 bg-yemaozi"></div>
-        <note-show  :option="options" :start="run" slot="note">
+    <div class="suiji-sence">
+         <div class="floor1"><svg-icon class="lls" icon-class="yemaozi" :width="3" :height="1.6"></svg-icon></div>
+        <note-show  :option="options" :start="show" slot="note">
             <note-item>熬夜一时爽，一直熬夜一直爽</note-item>
         </note-show>
         <div data-swiper-parallax-x="300" class="floorPic">
@@ -15,18 +15,10 @@ export default {
     mixins:[myMixins]
 }
 </script>
-<style scoped>
-    .floor1{
-        margin-top:0.4rem;
-        margin-left:0.3rem;   
-    }
+<style scoped> 
     .floorPic{
         height:6.8rem;width:6.8rem;
         margin:1.5rem auto 0rem;
         position: relative;
     }
-    img{
-        width:100%;height:100%;
-    }
-    
 </style>>
