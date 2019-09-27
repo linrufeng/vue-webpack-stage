@@ -4,7 +4,7 @@
   "description": "vue编译工具",
   "main": "index.js",
   "pathConfig": {
-    "cache": "cache"
+    "cache": ".cache"
   },
   "scripts": {
     "dev": "webpack-dev-server --colors  --config .bin/webpack.dev.js",
